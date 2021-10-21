@@ -4,14 +4,20 @@ services:
         container_name: php-fpm
         image: php:7.4.3-fpm
         volumes:
-            - ./php:/usr/app/nginx/html/
+            - ./php:/usr/app/php
     nginx:
         container_name: nginx
         image: nginx
         ports:
-            - 80: 80
+            - 80:80
+            - 443:443
         volumes:
-            - ./config/default.conf:/etc/nginx/conf.d/default.conf
+            - ./php:/usr/app/php
+            - ./flask:/usr/app/flask
+            - ./config/default.conf:/etc/nginx/conf.d/default.conf:ro
+        depends_on:
+            - php-fpm
+        
     mongo:
         container_name: mongo
         image: mongo
@@ -20,8 +26,7 @@ services:
         volumes:
             - ./db/mongo:/data/db
             - ./config/mongod.conf:/etc/mongod.conf
-        depends_on:
-            - php-fpm
+
     # mysql:
     #     container_name: mysql
     #     image: mysql
