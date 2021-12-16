@@ -1,37 +1,22 @@
 version: '3'
 services:
-    php-fpm:
-        container_name: php-fpm
-        image: php:7.4.3-fpm
-        env_file: ./config/environmental.env
+    web:
+        container_name: web
+        build: .
+        env_file:
+            - ./env/web.env
         volumes:
-            - ./php:/usr/app/php
-    nginx:
-        container_name: nginx
-        image: nginx
+            - .:/usr/src/app
+        command: command
         ports:
-            - 80:80
-            - 443:443
-        volumes:
-            - ./php:/usr/app/php
-            - ./flask:/usr/app/flask
-            - ./config/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+            - 10000:81
         depends_on:
-            - php-fpm
+            - mongo
     mongo:
         container_name: mongo
         image: mongo
-        expose:
-            - 27017
+        ports:
+            - 27017:27017
         volumes:
             - ./db/mongo:/data/db
             - ./config/mongod.conf:/etc/mongod.conf
-
-    # mysql:
-    #     container_name: mysql
-    #     image: mysql
-    #     expose:
-    #         - 3306
-    #     volumes:
-    #         - ./db/mysql:/var/lib/mysql
-    #         - ./config/master.cnf:/etc/mysql/my.cnf
