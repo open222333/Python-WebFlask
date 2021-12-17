@@ -7,9 +7,9 @@ services:
             - ./env/web.env
         volumes:
             - .:/usr/src/app
-        command: command
+        command: python main.py
         ports:
-            - 10000:81
+            - 10000:5000
         depends_on:
             - mongo
     mongo:
