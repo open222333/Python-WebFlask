@@ -1,3 +1,6 @@
+# 客製化
+local_python_env.sh
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

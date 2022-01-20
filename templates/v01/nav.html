@@ -1,0 +1,71 @@
+<nav id='nav_nav' class="navbar navbar-inverse">
+  <div class="container">
+    <span id='nav_av9'>
+      <ul class="nav nav-pills">
+        <li{% if request.path == "/backend/" or request.path == "/backend/version" %} class="active" {% endif %}>
+          <a href="javascript:go_('');void(0);">版本
+            <span id='nav_version' class="badge"></span>
+          </a></li>
+      </ul>
+    </span>
+  </div>
+
+</nav>
+
+<script type="text/javascript" src="{{ url_for('static', filename='backend/js/trirand/i18n/grid.locale-tw.js') }}">
+</script>
+<script type="text/javascript" src="{{ url_for('static', filename='backend/js/trirand/jquery.jqGrid.min.js') }}">
+</script>
+<script type="text/javascript" src="{{ url_for('static', filename='backend/js/bootstrap-datepicker.min.js') }} ">
+</script>
+<script type="text/javascript" src="{{ url_for('static', filename='backend/js/bootstrap-datepicker.zh-TW.min.js') }}"
+  charset="UTF-8"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='backend/js/tinymce/tinymce.min.js') }}"
+  charset="UTF-8"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='backend/js/tinymce/jquery.tinymce.min.js') }}"
+  charset="UTF-8"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.0/jquery.form.min.js"
+  integrity="sha384-E4RHdVZeKSwHURtFU54q6xQyOpwAhqHxy2xl9NLW9TQIqdNrNh60QVClBRBkjeB8" crossorigin="anonymous">
+</script>
+
+
+<link rel="stylesheet" type="text/css" media="screen"
+  href="{{ url_for('static', filename='backend/css/trirand/ui.jqgrid-bootstrap.css') }}" />
+<link rel="stylesheet" type="text/css" media="screen"
+  href="{{ url_for('static', filename='backend/css/bootstrap-datepicker3.min.css') }}" />
+
+<script type="text/javascript">
+  var navs = ['version', 'video_notyet', 'video_already', 'video_all', 'video_exclusive_notyet',
+    'video_exclusive_already', 'video_exclusive_all', 'actor', 'genre', 'order', 'user', 'account', 'topic',
+    'short_genre', 'short_version', 'short_video_notyet', 'short_video_already', 'short_video_all',
+    'fpie_notyet', 'fpie_already', 'fpie_all'
+  ];
+
+  function api_counts() {
+    var jqxhr = $.ajax({
+        url: '{{ url_for('
+        avnight.backend.api_counts ') }}'
+      })
+      .done(function (data) {
+        if (Boolean(data.success)) {
+          for (var j = 0; j < navs.length; j++) {
+            $('#nav_' + navs[j]).html(data[navs[j]]);
+            $('#tab_' + navs[j]).html(data[navs[j]]);
+          }
+        }
+      })
+      .fail(function () {})
+      .always(function () {});
+  }
+
+  $(function () {
+    $.ajaxSetup({
+      beforeSend: function (jqXHR, settings) {
+        jqXHR.setRequestHeader("Authorization", 'Bearer ' + $.cookie('token'));
+      }
+    });
+    api_counts();
+    $('#account_name').html($.cookie('name'));
+  });
+</script>
