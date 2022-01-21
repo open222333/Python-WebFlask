@@ -20,6 +20,8 @@ def create_app(config_name=None):
     if config_name != None:
         app.config.from_project(config[config_name])
 
+    # init_app用於控制一個包與一個或多個Flask應用程序的集成
+    # https://flask-sqlalchemy.palletsprojects.com/en/2.x/api/#flask_sqlalchemy.SQLAlchemy.init_app
     mongo.init_app(app)
     sqlalchemy.init_app(app)
 

@@ -10,6 +10,32 @@ def index():
     return render_template('v01/base.html')
 
 
+# 帳號
+@app_v01.route("/acount")
+def acount():
+    '''後台帳號頁面'''
+    return
+
+
+@app_v01.route("/api_acount")
+def api_acount():
+    '''後台帳號頁面'''
+    return
+
+
+@app_v01.route("/user")
+def user():
+    '''使用者帳號頁面'''
+    return
+
+
+@app_v01.route("/api_user")
+def api_user():
+    '''使用者帳號 API'''
+    return
+
+
+# 以下測試
 @app_v01.route("/test", methods=['GET', 'POST'])
 def test():
     return render_template('v01/test.html')
