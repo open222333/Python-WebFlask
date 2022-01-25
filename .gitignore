@@ -1,6 +1,8 @@
 # 客製化
 local_python_env.sh
 *.icloud
+*test*.txt
+*test*.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

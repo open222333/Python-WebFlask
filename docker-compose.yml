@@ -7,7 +7,7 @@ services:
             - ./env/web.env
         volumes:
             - .:/usr/src/app
-        command: python main.py
+        command: bash -c 'gunicorn -b 0.0.0.0:80 "appweb:create_app()"'
         ports:
             - 10000:5000
         depends_on:

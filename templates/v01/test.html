@@ -22,7 +22,7 @@
 
 <script type="text/javascript">
     jQuery("#colspan").jqGrid({
-        url: 'server.php?q=4',
+        url: '{{ url_for('v01.api_test') }}',
         datatype: "json",
         colNames: ['Date', 'Inv No', 'Client', 'Amount', 'Tax', 'Total', 'Notes'],
         colModel: [{
