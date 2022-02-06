@@ -7,13 +7,13 @@ services:
             - ./env/web.env
         volumes:
             - .:/usr/src/app
-        command: bash -c 'gunicorn -b 0.0.0.0:80 "appweb:create_app()"'
+        command: bash -c 'gunicorn -b 0.0.0.0:5000 -c config/gunicorn_config.py "appweb:create_app()"'
         ports:
             - 10000:5000
         depends_on:
-            - mongo
-    mongo:
-        container_name: mongo
+            - web-mongo
+    web-mongo:
+        container_name: web-mongo
         image: mongo
         ports:
             - 27017:27017
