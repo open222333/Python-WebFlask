@@ -3,6 +3,7 @@ local_python_env.sh
 *.icloud
 *test*.txt
 *test*.py
+*.env
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
