@@ -1,13 +1,12 @@
 from appweb import create_app
-from flask import render_template
 import os
 
 app = create_app(os.environ.get('FLASK_CONFIG', None))
 
 
 @app.route("/")
-def index():
-    return render_template('index.html')
+def web_status():
+    return 'ok'
 
 
 if __name__ == "__main__":

@@ -6,11 +6,11 @@ app_v01 = Blueprint('v01', __name__, static_folder='appweb/static')
 
 
 @app_v01.route("/")
-def index():
+def login():
     return render_template('v01/login.html')
 
 @app_v01.route("/main")
-def index():
+def main():
     return render_template('v01/main.html')
 
 
