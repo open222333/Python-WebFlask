@@ -7,7 +7,11 @@ app_v01 = Blueprint('v01', __name__, static_folder='appweb/static')
 
 @app_v01.route("/")
 def index():
-    return render_template('v01/base.html')
+    return render_template('v01/login.html')
+
+@app_v01.route("/main")
+def index():
+    return render_template('v01/main.html')
 
 
 # 帳號
