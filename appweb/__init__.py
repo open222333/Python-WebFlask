@@ -16,6 +16,10 @@ def create_app(config_name=None):
         template_folder='../templates'
     )
 
+    @app.route("/")
+    def web_status():
+        return 'ok'
+
     # 載入設定檔
     from config.flask_config import config
     if config_name != None:
