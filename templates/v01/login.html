@@ -1,4 +1,5 @@
-<!doctype html>
+{% extends 'v01/base.html' %}
+{% block container %}
 <html>
 
 <head>
@@ -46,5 +47,10 @@
 </html>
 
 <script>
-
+  function api_account_verify() {
+    $.ajax({
+      url: '{{ url_for('v01.api_account_verify') }}'',
+    })
+  }
 </script>
+{% endblock %}
