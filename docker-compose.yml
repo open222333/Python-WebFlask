@@ -3,8 +3,7 @@ services:
     web:
         container_name: web
         build: .
-        env_file:
-            - ./test.env
+        env_file: .env
         volumes:
             - .:/usr/src/app
         command: bash -c 'gunicorn -b 0.0.0.0:5000 -c config/gunicorn_config.py "appweb:create_app()"'
