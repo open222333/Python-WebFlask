@@ -1,10 +1,86 @@
 {% extends 'v01/base.html' %}
 {% block container %}
-{{ super() }}
-{% include 'v01/nav.html' %}
+  {{ super() }}
+  {% include 'v01/nav.html' %}
+  <div>
+    <!-- Header -->
+    <header id="header">
+      <a class="logo" href=#>Tom's Web</a>
+      <nav>
+        <a href="#menu">菜單</a>
+      </nav>
+    </header>
 
-<div>
-  <h1>主畫面</h1>
-</div>
+    <!-- Nav -->
+    <nav id="menu">
+      <ul class="links">
+        <li>
+          <a href="index.html">首頁</a>
+        </li>
+        <li>
+          <a href="test.html">測試</a>
+        </li>
+        <li>
+          <a href="">登入</a>
+        </li>
+      </ul>
+    </nav>
 
+    <!-- Banner -->
+    <section id="banner">
+      <div class="inner">
+        <h1>標題</h1>
+        <p>內容</p>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="wrapper">
+      <div class="inner">
+        <header class="special">
+          <h2>中標題</h2>
+          <p>簡介</p>
+        </header>
+        <div class="testimonials">
+          <section>
+            <div class="content">
+              <blockquote>
+                <p>內容1</p>
+              </blockquote>
+            </div>
+          </section>
+          <section>
+            <div class="content">
+              <blockquote>
+                <p>內容2</p>
+              </blockquote>
+            </div>
+          </section>
+          <section>
+            <div class="content">
+              <blockquote>
+                <p>內容3</p>
+              </blockquote>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+      <div class="inner">
+        <div class="copyright">
+          &copy; Untitled. Photos <a href="https://unsplash.co">Unsplash</a>, Video <a href="https://coverr.co">Coverr</a>.
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </div>
 {% endblock %}

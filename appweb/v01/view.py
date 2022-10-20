@@ -39,6 +39,11 @@ def api_user():
     return
 
 
+@app_v01.route('/api_account_verify')
+def api_account_verify():
+    pass
+
+
 # 以下測試
 @app_v01.route("/test", methods=['GET', 'POST'])
 def test():
