@@ -1,5 +1,4 @@
-FROM            python:3.10.1-buster
-MAINTAINER      AVnight Inc. <powpi2000@gmail.com>
+FROM            python:3.11.2-buster
 
 WORKDIR /usr/src/app
 COPY . .
@@ -9,5 +8,5 @@ RUN apt-get install vim net-tools iftop -y
 
 # RUN update-ca-certificates
 # RUN apt-get install libmediainfo-dev -y
-
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt

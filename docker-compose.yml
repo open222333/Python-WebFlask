@@ -1,21 +1,21 @@
-version: '3'
+version: "3"
 services:
-    web:
-        container_name: web
-        build: .
-        env_file: .env
-        volumes:
-            - .:/usr/src/app
-        command: bash -c 'gunicorn -b 0.0.0.0:5000 -c config/gunicorn_config.py "appweb:create_app()"'
-        ports:
-            - 80:5000
-        depends_on:
-            - web-mongo
-    web-mongo:
-        container_name: web-mongo
-        image: mongo
-        ports:
-            - 27017:27017
-        volumes:
-            - ./db/mongo:/data/db
-            - ./config/mongod.conf:/etc/mongod.conf
+  web:
+    container_name: web
+    build: .
+    env_file: .env
+    volumes:
+      - .:/usr/src/app
+    command: bash -c 'gunicorn -b 0.0.0.0:5000 -c config/gunicorn_config.py "appweb:create_app()"'
+    ports:
+      - 80:5000
+    depends_on:
+      - web-mongo
+  web-mongo:
+    container_name: web-mongo
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - ./db/mongo:/data/db
+      - ./config/mongod.conf:/etc/mongod.conf
