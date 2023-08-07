@@ -135,3 +135,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# javascript
+package-lock.json
+.vscode/symbols.json
+
+apps/static/assets/node_modules
+apps/static/assets/yarn.lock
+apps/static/assets/.temp
